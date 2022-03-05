@@ -1,30 +1,39 @@
-Método de compressão Deflate (o qual mistura os métodos Lz77 e Huffman) para texto.
-Para a sua utilização é necessário criar 1 pasta (deflate) com 2 pastas lá dentro (compressed e decompressed) e instalar a biblioteca dahuffman:
-    - pip install dahuffman
-Ainda para assegurar o seu funcionamento é necessário ter os ficheiros a comprimir/descomprimir na mesma pasta do ficheiro deflate.py e correr o seguinte código no terminal:
+# TI_Project-Deflate
 
-Para compressão:
-    python deflate.py <tamanho-janela> <tamanho-buffer> <-compress> <on/off> <name-of-file>
-    NOTA: É gerado o ficheiro 'huffman_aux.bin' que guarda as frequências dos caracteres
+- [x] Finished
 
-Para descompressão:
-    python deflate.py <tamanho-janela> <tamanho-buffer> <-decompress> <on/off> <name-of-file> <extensão>
-    NOTA: É necessário ter o ficheiro 'huffman_aux.bin' na mesma diretoria do huffman.py
+## Index:
+- [Description](#description)
+- [To run this project](#to-run-this-project)
+- [Notes important to read](#notes-important-to-read)
 
+## Description:
+Algorithm of compression, Deflate. This Algorithm use LZ77 and Huffman Enconding.
 
-As flags -compress e -decompress servem para distinguir se vai fazer uma compressão ou descompressão.
-Se correr o programa com:
-    on -> será apresentado, no terminal, a compressão ou descompressão
-    off -> não será nada apresentado
-A extensão definirá o tipo de ficheiro que irá ser obtido aquando da descompressão
+## To run this project:
+[WARNING] Python 3.9(or higher) and the libraries refered must be installed <br>
+For compression:<br>
+```shellscript
+[your-disk]:[name-path]> python deflate.py <window-size> <buffer-size> -compress on/off <name-of-file>
+```
+*NOTE: The file 'huffman_aux.bin' is generated which stores the character frequencies*
 
-Os ficheiros comprimidos irão para a seguinte diretoria:
-    deflate/compressed
+For decompression:<br>
+```shellscript
+[your-disk]:[name-path]> python deflate.py <window-size> <buffer-size> -decompress on/off <name-of-file> <extension>
+```
+*NOTE: It is necessary to have the file 'huffman_aux.bin' in the same directory as deflate.py*
 
-Os ficheiros descomprimidos irão para a seguinte diretoria:
-    deflate/decompress
-
-
-NOTAS FINAIS:
--> Devidos às limitações da funções utilizadas (bytes() e bytearray()) o tamanho da janela deverá ser um número utilizado entre 0 e 256 (inclusive)
--> Apesar de aparecer a parte <on/off>, ao correr o comando da compressão nunca será apresentado qualquer "print" no terminal
+## Notes important to read
+- It is necessary to have the files to be compressed/decompressed in the same folder as the deflate.py file 
+- The -compress and -decompress flags are used to distinguish whether to compress or decompress.
+- If you run the program with:<br>
+     + on -> the compression or decompression will be displayed in the terminal<br>
+     + off -> nothing will be displayed
+- The < extension> will define the type of file that will be retrieved when decompressing
+- The compressed files will go to the following directory:<br>
+     + deflate/compressed
+- The unzipped files will go to the following directory:<br>
+     + deflate/decompress 
+- Due to the limitations of the functions used (bytes() and bytearray()) the window size must be a number used between 0 and 256 (inclusive)
+- Although the on/off part appears, running the compression command will never show any "print" in the terminal 
